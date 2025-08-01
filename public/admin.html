@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Administração</title>
+  <link rel="stylesheet" href="styles/base.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/admin.css" />
+</head>
+<body>
+  <header class="header">
+    <h1>🛠️ Painel Administrativo</h1>
+    <div id="adminLoja">Loja: --</div>
+  </header>
+
+  <main class="container">
+    <!-- Upload Base -->
+    <section class="card">
+      <h2>📤 Importar Base de Produtos</h2>
+      <div class="input-group">
+        <label for="fileBase">Selecionar Arquivo .xlsx</label>
+        <input type="file" id="fileBase" accept=".xlsx" />
+      </div>
+      <button id="btnUploadBase" class="btn btn-primary">Enviar Base</button>
+    </section>
+
+    <!-- Criar Contagem -->
+    <section class="card">
+      <h2>📝 Criar Nova Contagem</h2>
+      <div class="grid-2">
+        <div class="input-group">
+          <label for="nomeContagem">Nome da Contagem</label>
+          <input id="nomeContagem" type="text" />
+        </div>
+        <div class="input-group">
+          <label for="modeloContagem">Modelo</label>
+          <select id="modeloContagem">
+            <option value="cega">Cega</option>
+            <option value="subcategoria">Por Subcategoria</option>
+          </select>
+        </div>
+      </div>
+      <button id="btnCriarContagem" class="btn btn-primary">Criar Contagem</button>
+    </section>
+
+    <!-- Geração de Etapas -->
+    <section class="card">
+      <h2>🔁 Gerar Nova Etapa</h2>
+      <div class="input-group">
+        <label for="selectContagens">Contagens Existentes</label>
+        <select id="selectContagens"></select>
+      </div>
+      <button id="btnGerarEtapa" class="btn btn-secondary">Gerar Etapa Subcategoria</button>
+    </section>
+
+    <!-- Cadastro de Usuário -->
+    <section class="card">
+      <h2>👤 Cadastro de Usuários</h2>
+      <div class="grid-2">
+        <div class="input-group">
+          <label for="usuario">Usuário</label>
+          <input id="usuario" type="text" />
+        </div>
+        <div class="input-group">
+          <label for="senha">Senha</label>
+          <input id="senha" type="password" />
+        </div>
+        <div class="input-group">
+          <label for="tipoUsuario">Tipo</label>
+          <select id="tipoUsuario">
+            <option value="user">Comum</option>
+            <option value="admin">Admin</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label for="lojaUsuario">Loja</label>
+          <input id="lojaUsuario" type="text" placeholder="ex: 001 ou 'all'" />
+        </div>
+      </div>
+      <button id="btnCadastrar" class="btn btn-primary">Cadastrar Usuário</button>
+    </section>
+
+    <!-- Relatórios -->
+    <section class="card">
+      <h2>📊 Relatórios</h2>
+      <button class="btn">Itens Contados</button>
+      <button class="btn">Itens Não Contados</button>
+      <button class="btn">Divergentes</button>
+    </section>
+  </main>
+
+  <script type="module" src="pages/admin.js"></script>
+</body>
+</html>

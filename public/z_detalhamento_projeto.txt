@@ -274,3 +274,25 @@ Editar
 
 Esse documento detalhado dá uma visão completa da arquitetura, fluxo, estruturas e responsabilidades do sistema. Se quiser adaptá-lo para um README.md, ou exportar como `.txt`, posso gerar nesse formato também!
 ::contentReference[oaicite:0]{index=0}
+
+
+
+
+
+o que tenho de arquivos vazios ainda, 
+
+loginManager.js
+Toast.js - tem o arquivo toast.js em utils/
+authService.js
+config.js
+dateUtils.js
+domUtils.js
+stringUtils.js
+utils.js - esse nao estava na sua estrutura inicial, coloquei em utils/, poderia confirmar se está certo?
+index.html
+relatorio.html
+
+
+
+
+fazer uma comparação do modelo anterior com o atual, e testar funcionalidades
