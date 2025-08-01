@@ -1,0 +1,156 @@
+:root {
+  --font-primary: 'Segoe UI', sans-serif;
+  --color-bg: #f4f6f9;
+  --color-text: #333;
+  --color-white: #fff;
+  --color-primary: #3498db;
+  --color-primary-dark: #2980b9;
+  --color-card: #ecf0f1;
+  --color-highlight: #dff9fb;
+
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+}
+
+/* =================== BASE =================== */
+body {
+  margin: 0;
+  padding: 2rem;
+  font-family: var(--font-primary);
+  background: var(--color-bg);
+  color: var(--color-text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+main {
+  width: 100%;
+  max-width: 600px;
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+}
+
+/* =================== TYPOGRAPHY =================== */
+h1, h2 {
+  text-align: center;
+  color: #2c3e50;
+}
+
+/* =================== FORMS =================== */
+input[type="text"],
+input[type="file"],
+input[type="tel"],
+input[type="password"],
+input[type="number"],
+select {
+  width: 100%;
+  padding: 16px;
+  font-size: 1.1rem;
+  margin: 12px 0;
+  border: 1px solid #ccc;
+  border-radius: var(--radius-md);
+  box-sizing: border-box;
+}
+
+/* =================== BUTTONS =================== */
+button {
+  padding: 12px 20px;
+  margin: 10px 0;
+  width: 100%;
+  font-size: 1rem;
+  border: none;
+  background: var(--color-primary);
+  color: var(--color-white);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: var(--color-primary-dark);
+}
+
+/* =================== COMPONENTS =================== */
+.card {
+  background: var(--color-card);
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  margin: 1rem 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
+}
+
+li {
+  background: var(--color-highlight);
+  margin: 5px 0;
+  padding: 8px;
+  border-radius: var(--radius-sm);
+}
+
+/* =================== CAMERA =================== */
+#cameraContainer {
+  margin-top: 20px;
+  position: relative;
+}
+
+#camera {
+  width: 100%;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--color-primary);
+}
+
+/* =================== RESPONSIVE =================== */
+@media (max-width: 480px) {
+  body {
+    padding: 1rem;
+  }
+
+  main {
+    padding: 1rem;
+  }
+
+  h1, h2 {
+    font-size: 1.4rem;
+  }
+
+  input,
+  select,
+  button {
+    width: 100%;
+    font-size: 1.1rem;
+  }
+
+  button {
+    margin: 8px 0;
+  }
+}
+
+.barra__pesquisa {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-quadrado {
+  aspect-ratio: 1 / 1;
+  width: 50px;
+  padding: 5%;
+  min-width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
