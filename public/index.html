@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | Conferência de Estoque</title>
+  <link rel="stylesheet" href="styles/base.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/login.css" />
+</head>
+<body>
+  <main class="container login-container">
+    <section class="card login-card">
+      <h1>🔐 Acesso ao Sistema</h1>
+
+      <div class="input-group">
+        <label for="usuario">Usuário</label>
+        <input id="usuario" type="text" placeholder="Digite seu usuário" required />
+      </div>
+
+      <div class="input-group">
+        <label for="senha">Senha</label>
+        <input id="senha" type="password" placeholder="Digite sua senha" required />
+      </div>
+
+      <div class="input-group">
+        <label for="loja">Loja</label>
+        <input id="loja" type="text" placeholder="Ex: 001 ou 'all'" required />
+      </div>
+
+      <button id="btnLogin" class="btn btn-primary">Entrar</button>
+    </section>
+  </main>
+
+  <script type="module" src="pages/index.js"></script>
+</body>
+</html>

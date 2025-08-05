@@ -1,0 +1,24 @@
+#tabelaResultados {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+#tabelaResultados th,
+#tabelaResultados td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+.btn-group {
+  display: flex;
+  gap: 12px;
+  margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .btn-group {
+    flex-direction: column;
+  }
+}

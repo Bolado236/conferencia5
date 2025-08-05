@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Relatórios | Conferência de Estoque</title>
+  <link rel="stylesheet" href="styles/base.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/relatorio.css" />
+</head>
+<body>
+  <header class="header">
+    <h1>📊 Relatórios de Contagem</h1>
+    <div id="relatorioLoja">Loja: --</div>
+  </header>
+
+  <main class="container">
+    <!-- Filtros -->
+    <section class="card">
+      <h2>Selecionar Contagem</h2>
+      <div class="input-group">
+        <label for="selectContagem">Contagens Disponíveis</label>
+        <select id="selectContagem"></select>
+      </div>
+
+      <div class="btn-group">
+        <button class="btn btn-primary" id="btnContados">Itens Contados</button>
+        <button class="btn btn-secondary" id="btnNaoContados">Não Contados</button>
+        <button class="btn btn-secondary" id="btnDivergentes">Divergentes</button>
+      </div>
+    </section>
+
+    <!-- Resultados -->
+    <section class="card">
+      <h2>Resultados</h2>
+      <div id="outputContainer">
+        <table id="tabelaResultados">
+          <thead></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="pages/relatorio.js"></script>
+</body>
+</html>
