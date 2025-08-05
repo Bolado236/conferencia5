@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Testes do Sistema</title>
+  <link rel="stylesheet" href="styles/base.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <style>
+    body {
+      padding: 2rem;
+      font-family: sans-serif;
+    }
+    section {
+      margin-bottom: 2rem;
+    }
+    button {
+      margin: 4px;
+    }
+    pre {
+      background: #f9f9f9;
+      padding: 1rem;
+      border: 1px solid #ddd;
+      overflow: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>🔧 Painel de Testes</h1>
+
+  <section>
+    <h2>Usuários</h2>
+    <button id="btnTestLogin">Testar Login</button>
+    <button id="btnCadastrarUsuario">Cadastrar Usuário</button>
+  </section>
+
+  <section>
+    <h2>Contagem</h2>
+    <button id="btnCriarContagem">Criar Contagem</button>
+    <button id="btnSalvarContagemProduto">Salvar Contagem Produto</button>
+    <button id="btnGerarEtapa">Gerar Etapa Subcategoria</button>
+  </section>
+
+  <section>
+    <h2>Relatórios</h2>
+    <button id="btnRelatorioDivergentes">Divergentes</button>
+    <button id="btnRelatorioNaoContados">Não Contados</button>
+    <button id="btnRelatorioContados">Contados</button>
+  </section>
+
+  <section>
+    <h2>📤 Logs</h2>
+    <pre id="logOutput">Pronto para testar...</pre>
+  </section>
+
+  <script type="module">
+    import { usuarioManager } from '../src/managers/usuarioManager.js';
+    import { contagemManager } from '../src/managers/contagemManager.js';
+    import { adminManager } from '../src/managers/adminManager.js';
+    import { etapaManager } from '../src/managers/etapaManager.js';
+    import { relatorioManager } from '../src/managers/relatorioManager.js';
+    import { divergenciaManager } from '../src/managers/divergenciaManager.js';
+
+    const output = document.getElementById('logOutput');
+    const loja = '001';
+    const contagem = 'teste-contagem';
+    const etapaId = 'etapa1';
+
+    function log(obj) {
+      output.textContent = typeof obj === 'string' ? obj : JSON.stringify(obj, null, 2);
+    }
+
+    document.getElementById('btnTestLogin').onclick = async () => {
+      try {
+        const user = await usuarioManager.login('admin', '1234', loja);
+        log(user);
+      } catch (e) {
+        log(e.message);
+      }
+    };
+
+    document.getElementById('btnCadastrarUsuario').onclick = async () => {
+      try {
+        await usuarioManager.cadastrarUsuario({
+          usuario: 'testeUser',
+          senha: '123',
+          loja,
+          tipo: 'user'
+        });
+        log('Usuário criado com sucesso');
+      } catch (e) {
+        log(e.message);
+      }
+    };
+
+    document.getElementById('btnCriarContagem').onclick = async () => {
+      try {
+        await adminManager.criarContagem(loja, contagem, 'cega');
+        log('Contagem criada');
+      } catch (e) {
+        log(e.message);
+      }
+    };
+
+    document.getElementById('btnSalvarContagemProduto').onclick = async () => {
+      try {
+        const fakeUser = { usuario: 'testeUser', loja };
+        await contagemManager.salvarContagemProduto({
+          codigo: 'ABC123',
+          descricao: 'Produto Teste'
+        }, 10, fakeUser, contagem, 'loja');
+        log('Produto salvo');
+      } catch (e) {
+        log(e.message);
+      }
+    };
+
+    document.getElementById('btnGerarEtapa').onclick = async () => {
+      try {
+        await etapaManager.gerarEtapa(loja, contagem, 'subcategoria');
+        log('Etapa gerada');
+      } catch (e) {
+        log(e.message);
+      }
+    };
+
+    document.getElementById('btnRelatorioDivergentes').onclick = async () => {
+      try {
+        const res = await relatorioManager.obterDivergentes(loja, contagem);
+        log(res);
+      } catch (e) {
+        log(e.message);
+      }
+    };
+
+    document.getElementById('btnRelatorioNaoContados').onclick = async () => {
+      try {
+        const res = await relatorioManager.obterItensNaoContados(loja, contagem);
+        log(res);
+      } catch (e) {
+        log(e.message);
+      }
+    };
+
+    document.getElementById('btnRelatorioContados').onclick = async () => {
+      try {
+        const res = await relatorioManager.obterItensContados(loja, contagem);
+        log(res);
+      } catch (e) {
+        log(e.message);
+      }
+    };
+  </script>
+</body>
+</html>

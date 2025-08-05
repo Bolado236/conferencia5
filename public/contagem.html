@@ -1,21 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contagem de Produtos</title>
-  <link rel="stylesheet" href="styles/base.css" />
-  <link rel="stylesheet" href="styles/components.css" />
-  <link rel="stylesheet" href="styles/contagem.css" />
+  <meta charset="UTF‑8" />
+  <meta name="viewport" content="width=device‑width, initial‑scale=1.0" />
+  <title>Contagem | Estoque</title>
+  <link rel="stylesheet" href="../styles/base.css" />
+  <link rel="stylesheet" href="../styles/contagem.css" />
 </head>
 <body>
   <header class="header">
-    <h1>📦 Contagem de Produtos</h1>
-    <div id="usuarioAtual">Usuário: --</div>
+    <h1>Contagem de Produtos</h1>
+    <div id="usuarioAtual">Usuário:</div>
   </header>
-
   <main class="container">
-    <!-- Busca -->
     <section class="card">
       <h2>Buscar Produto</h2>
       <div class="input-group">
@@ -26,16 +23,12 @@
         </div>
         <div id="cameraView"></div>
       </div>
-      <div class="produto-info">
-        <strong id="spanDescricao">Descrição:</strong>
-      </div>
+      <div class="produto-info"><strong id="spanDescricao">Descrição:</strong></div>
     </section>
-
-    <!-- Quantidade -->
     <section class="card">
-      <h2>Registrar Contagem</h2>
+      <h2>Registrar Quantidade</h2>
       <div class="input-group">
-        <label for="inputQtd">Quantidade Encontrada</label>
+        <label for="inputQtd">Quantidade</label>
         <input id="inputQtd" type="number" min="0" />
       </div>
       <div class="input-group">
@@ -48,7 +41,6 @@
       <button id="btnSalvar" class="btn btn-primary">Salvar Contagem</button>
     </section>
   </main>
-
-  <script type="module" src="pages/contagem.js"></script>
+  <script type="module" src="../src/pages/contagem.js"></script>
 </body>
 </html>

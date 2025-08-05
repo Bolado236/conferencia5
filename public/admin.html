@@ -1,62 +1,53 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Administração</title>
-  <link rel="stylesheet" href="styles/base.css" />
-  <link rel="stylesheet" href="styles/components.css" />
-  <link rel="stylesheet" href="styles/admin.css" />
+  <meta charset="UTF‑8" />
+  <meta name="viewport" content="width=device‑width, initial‑scale=1.0" />
+  <title>Admin | Conferência Estoque</title>
+  <link rel="stylesheet" href="../styles/base.css" />
+  <link rel="stylesheet" href="../styles/admin.css" />
 </head>
 <body>
   <header class="header">
-    <h1>🛠️ Painel Administrativo</h1>
-    <div id="adminLoja">Loja: --</div>
+    <h1>Painel Administrativo</h1>
+    <div id="adminLoja">Loja:</div>
   </header>
-
   <main class="container">
-    <!-- Upload Base -->
     <section class="card">
-      <h2>📤 Importar Base de Produtos</h2>
+      <h2>Importar Base (.xlsx)</h2>
       <div class="input-group">
-        <label for="fileBase">Selecionar Arquivo .xlsx</label>
+        <label for="fileBase">Arquivo</label>
         <input type="file" id="fileBase" accept=".xlsx" />
       </div>
       <button id="btnUploadBase" class="btn btn-primary">Enviar Base</button>
     </section>
-
-    <!-- Criar Contagem -->
     <section class="card">
-      <h2>📝 Criar Nova Contagem</h2>
+      <h2>Criar Contagem</h2>
       <div class="grid-2">
         <div class="input-group">
-          <label for="nomeContagem">Nome da Contagem</label>
+          <label for="nomeContagem">Nome</label>
           <input id="nomeContagem" type="text" />
         </div>
         <div class="input-group">
           <label for="modeloContagem">Modelo</label>
           <select id="modeloContagem">
             <option value="cega">Cega</option>
-            <option value="subcategoria">Por Subcategoria</option>
+            <option value="subcategoria">Subcategoria</option>
           </select>
         </div>
       </div>
       <button id="btnCriarContagem" class="btn btn-primary">Criar Contagem</button>
     </section>
-
-    <!-- Geração de Etapas -->
     <section class="card">
-      <h2>🔁 Gerar Nova Etapa</h2>
+      <h2>Gerar Nova Etapa</h2>
       <div class="input-group">
-        <label for="selectContagens">Contagens Existentes</label>
+        <label for="selectContagens">Contagem</label>
         <select id="selectContagens"></select>
       </div>
-      <button id="btnGerarEtapa" class="btn btn-secondary">Gerar Etapa Subcategoria</button>
+      <button id="btnGerarEtapa" class="btn btn-secondary">Gerar Etapa</button>
     </section>
-
-    <!-- Cadastro de Usuário -->
     <section class="card">
-      <h2>👤 Cadastro de Usuários</h2>
+      <h2>Cadastro de Usuários</h2>
       <div class="grid-2">
         <div class="input-group">
           <label for="usuario">Usuário</label>
@@ -69,27 +60,26 @@
         <div class="input-group">
           <label for="tipoUsuario">Tipo</label>
           <select id="tipoUsuario">
-            <option value="user">Comum</option>
+            <option value="user">Usuário</option>
             <option value="admin">Admin</option>
           </select>
         </div>
         <div class="input-group">
           <label for="lojaUsuario">Loja</label>
-          <input id="lojaUsuario" type="text" placeholder="ex: 001 ou 'all'" />
+          <input id="lojaUsuario" type="text" />
         </div>
       </div>
       <button id="btnCadastrar" class="btn btn-primary">Cadastrar Usuário</button>
     </section>
-
-    <!-- Relatórios -->
     <section class="card">
-      <h2>📊 Relatórios</h2>
-      <button class="btn">Itens Contados</button>
-      <button class="btn">Itens Não Contados</button>
-      <button class="btn">Divergentes</button>
+      <h2>Relatórios</h2>
+      <div class="btn-group">
+        <button class="btn btn-primary" id="btnRelContados">Itens Contados</button>
+        <button class="btn btn-secondary" id="btnRelNaoContados">Não Contados</button>
+        <button class="btn btn-secondary" id="btnRelDivergentes">Divergentes</button>
+      </div>
     </section>
   </main>
-
-  <script type="module" src="pages/admin.js"></script>
+  <script type="module" src="../src/pages/admin.js"></script>
 </body>
 </html>

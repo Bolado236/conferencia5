@@ -1,5 +1,5 @@
 import { db } from '../firebase.js';
-import { sanitizeId } from './utils.js';
+import { sanitizeId } from '../utils/utils.js';
 
 export const subcategoriaManager = {
   async atribuirParaUsuario(lojaId, contagemId, etapaId, subCategoria, userId) {
@@ -15,25 +15,24 @@ export const subcategoriaManager = {
 
     await pendenteRef.update({ atribuidoPara: userId });
 
-    const itensDoc = await pendenteRef.get();
-    const { itens } = itensDoc.data();
+    const snapshot = await pendenteRef.get();
+    const { itens } = snapshot.data();
 
-    const userRef = db.collection('conferencias')
+    await db.collection('conferencias')
       .doc(lojaId)
       .collection('contagens')
       .doc(contagemId)
       .collection('etapas')
       .doc(etapaId)
       .collection('listagensValidas')
-      .doc(userId);
-
-    await userRef.set({
-      itens,
-      subCategoria,
-      finalizado: false,
-      atribuidaManualmente: true,
-      criadaEm: new Date().toISOString()
-    });
+      .doc(userId)
+      .set({
+        itens,
+        subCategoria,
+        finalizado: false,
+        atribuidaManualmente: true,
+        criadaEm: new Date().toISOString()
+      });
   },
 
   async removerAtribuicao(lojaId, contagemId, etapaId, subCategoria) {
@@ -47,45 +46,43 @@ export const subcategoriaManager = {
       .collection('pendentesDistribuir')
       .doc(subId);
 
-    const snapshot = await pendenteRef.get();
-    const { atribuidoPara } = snapshot.data();
+    const snap = await pendenteRef.get();
+    const { atribuidoPara } = snap.data();
 
     if (atribuidoPara) {
       await pendenteRef.update({ atribuidoPara: null });
 
-      const userRef = db.collection('conferencias')
+      await db.collection('conferencias')
         .doc(lojaId)
         .collection('contagens')
         .doc(contagemId)
         .collection('etapas')
         .doc(etapaId)
         .collection('listagensValidas')
-        .doc(atribuidoPara);
-
-      await userRef.delete();
+        .doc(atribuidoPara)
+        .delete();
     }
   },
 
   async adicionarItem(lojaId, contagemId, etapaId, subCategoria, codigoProduto) {
     const subId = sanitizeId(subCategoria);
-    const pendenteRef = db.collection('conferencias')
+    await db.collection('conferencias')
       .doc(lojaId)
       .collection('contagens')
       .doc(contagemId)
       .collection('etapas')
       .doc(etapaId)
       .collection('pendentesDistribuir')
-      .doc(subId);
-
-    await pendenteRef.update({
-      itens: firebase.firestore.FieldValue.arrayUnion(codigoProduto),
-      status: { codigo: 'divergente' }
-    });
+      .doc(subId)
+      .update({
+        itens: firebase.firestore.FieldValue.arrayUnion(codigoProduto),
+        status: { codigo: 'divergente' }
+      });
   },
 
   async finalizarSubcategoriaManual(lojaId, contagemId, etapaId, subCategoria, userId) {
     const subId = sanitizeId(subCategoria);
-    const pendenteRef = db.collection('conferencias')
+    const ref = db.collection('conferencias')
       .doc(lojaId)
       .collection('contagens')
       .doc(contagemId)
@@ -94,7 +91,7 @@ export const subcategoriaManager = {
       .collection('pendentesDistribuir')
       .doc(subId);
 
-    await pendenteRef.update({
+    await ref.update({
       finalizada: true,
       atribuidoPara: userId,
       status: { codigo: 'finalizado' }

@@ -2,11 +2,15 @@ import { db } from '../firebase.js';
 
 export const divergenciaManager = {
   async getItensDivergentes(lojaId, contagemId) {
-    const contagemRef = db.collection('conferencias').doc(lojaId).collection('contagens').doc(contagemId);
-    const baseSnap = await contagemRef.collection('baseProdutos').get();
+    const contagemRef = db.collection('conferencias')
+      .doc(lojaId)
+      .collection('contagens')
+      .doc(contagemId);
 
+    const baseSnap = await contagemRef.collection('baseProdutos').get();
     const etapaSnap = await contagemRef.collection('etapas').get();
-    const totais = {}; // { codigoProduto: totalSomado }
+
+    const totais = {};
 
     for (const etapa of etapaSnap.docs) {
       const contagensSnap = await etapa.ref.collection('contagens').get();
@@ -35,7 +39,6 @@ export const divergenciaManager = {
           contado
         });
 
-        // (Opcional) Atualiza o status diretamente
         await doc.ref.update({ status: 'divergente' });
       } else {
         await doc.ref.update({ status: 'correto' });

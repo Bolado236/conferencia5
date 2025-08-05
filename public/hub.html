@@ -3,28 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hub de Navegação</title>
-  <link rel="stylesheet" href="styles/base.css" />
-  <link rel="stylesheet" href="styles/components.css" />
-  <link rel="stylesheet" href="styles/hub.css" />
+  <title>Hub | Conferência de Estoque</title>
+  <link rel="stylesheet" href="../styles/base.css" />
+  <link rel="stylesheet" href="../styles/hub.css" />
 </head>
 <body>
   <header class="header">
-    <h1>🏬 Conferência de Estoque</h1>
-    <div id="lojaAtual">Loja: --</div>
+    <h1>Conferência de Estoque</h1>
+    <div id="usuarioAtual">—</div>
   </header>
-
   <main class="container">
     <section class="card">
-      <h2>Selecione a Contagem</h2>
+      <h2>Contagens Ativas</h2>
       <div class="input-group">
-        <label for="selectContagem">Contagens Ativas</label>
+        <label for="selectContagem">Selecione a Contagem</label>
         <select id="selectContagem"></select>
       </div>
       <button id="btnAcessar" class="btn btn-primary">Acessar Etapa</button>
     </section>
   </main>
-
-  <script type="module" src="pages/hub.js"></script>
+  <script type="module" src="../src/pages/hub.js"></script>
 </body>
 </html>
